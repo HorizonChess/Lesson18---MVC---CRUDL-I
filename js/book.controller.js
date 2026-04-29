@@ -14,7 +14,7 @@ function renderBooks() {
                 <td>${book.price}</td>
                 <td>
                     <button>Read</button>
-                    <button>Update</button>
+                    <button onclick="onUpdateBook('${book.id}')">Update</button>
                     <button onclick="onRemoveBook('${book.id}')">Delete</button>
                 </td>
             </tr>
@@ -27,4 +27,12 @@ function renderBooks() {
 function onRemoveBook(bookId) {
     removeBook(bookId)
     renderBooks()
+}
+
+function onUpdateBook(bookId) {
+    const newPrice = prompt('Enter new price:')
+    if (newPrice !== null && newPrice !== '') {
+        updatePrice(bookId, parseInt(newPrice))
+        renderBooks()
+    }
 }
