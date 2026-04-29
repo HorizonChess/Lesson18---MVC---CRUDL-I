@@ -1,12 +1,12 @@
 function onInit() {
-    renderBooks();
+    renderBooks()
 }
 
 function renderBooks() {
-    const books = getBooks();
-    const tableBody = document.querySelector('.books-table-body');
+    const books = getBooks()
+    const tableBody = document.querySelector('.books-table-body')
 
-    let html = '';
+    var html = ''
     books.forEach(book => {
         html += `
             <tr>
@@ -18,8 +18,8 @@ function renderBooks() {
                     <button>Delete</button>
                 </td>
             </tr>
-        `;
-    });
+        `
+    })
 
-    tableBody.innerHTML = html;
+    tableBody.innerHTML = html
 }

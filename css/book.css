@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    transition: all 0.3s ease
 }
 
 body {
@@ -11,16 +12,21 @@ body {
 }
 
 h1 {
+    display: flex;
+    justify-content: center;
+    align-content: center;
     color: #333;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
     border: 1px solid #ddd;
+    border-spacing: 10px;
     background-color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
 }
 
 thead {
@@ -28,6 +34,7 @@ thead {
 }
 
 th {
+    flex: 1;
     padding: 12px;
     text-align: left;
     font-weight: bold;
@@ -35,12 +42,28 @@ th {
 }
 
 td {
+    flex: 1;
     padding: 12px;
     border-bottom: 1px solid #ddd;
 }
 
+thead>tr {
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+    gap: 30px;
+}
+
+tbody>tr {
+    display: flex;
+    justify-content: flex-start;
+    flex:1;
+    gap: 20px;
+}
+
 tr:hover {
     background-color: #f9f9f9;
+
 }
 
 button {

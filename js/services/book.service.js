@@ -17,8 +17,8 @@ const gBooks = [
         price: 87,
         imgUrl: 'zorba.jpg'
     }
-];
+]
 
 function getBooks() {
-    return gBooks;
+    return gBooks
 }
