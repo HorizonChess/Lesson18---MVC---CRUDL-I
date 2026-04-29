@@ -15,11 +15,16 @@ function renderBooks() {
                 <td>
                     <button>Read</button>
                     <button>Update</button>
-                    <button>Delete</button>
+                    <button onclick="onRemoveBook('${book.id}')">Delete</button>
                 </td>
             </tr>
         `
     })
 
     tableBody.innerHTML = html
+}
+
+function onRemoveBook(bookId) {
+    removeBook(bookId)
+    renderBooks()
 }
