@@ -36,3 +36,14 @@ function onUpdateBook(bookId) {
         renderBooks()
     }
 }
+
+function onAddBook() {
+    const title = prompt('Enter book title:')
+    if (title === null || title === '') return
+
+    const price = prompt('Enter book price:')
+    if (price === null || price === '') return
+
+    addBook(title, parseInt(price))
+    renderBooks()
+}
