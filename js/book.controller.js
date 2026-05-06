@@ -13,7 +13,7 @@ function renderBooks() {
                 <td>${book.title}</td>
                 <td>${book.price}</td>
                 <td>
-                    <button>Read</button>
+                    <button onclick="onReadBook('${book.id}')">Read</button>
                     <button onclick="onUpdateBook('${book.id}')">Update</button>
                     <button onclick="onRemoveBook('${book.id}')">Delete</button>
                 </td>
@@ -46,4 +46,18 @@ function onAddBook() {
 
     addBook(title, parseInt(price))
     renderBooks()
+}
+
+function onReadBook(bookId) {
+    const book = getBooks().find(b => b.id === bookId)
+    if (!book) return
+
+    const detailsText = document.querySelector('.book-details-text')
+    detailsText.textContent = JSON.stringify(book, null, 2)
+
+    document.querySelector('.book-details-modal').classList.remove('hidden')
+}
+
+function onCloseModal() {
+    document.querySelector('.book-details-modal').classList.add('hidden')
 }
