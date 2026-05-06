@@ -1,4 +1,5 @@
 function onInit() {
+    _loadBooks()
     renderBooks()
 }
 
