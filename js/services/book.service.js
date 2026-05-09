@@ -1,11 +1,13 @@
 const STORAGE_KEY = 'books'
-let gBooks = []
+var gBooks = []
 
-function _loadBooks() {
+//use util functions
+function loadBooks() {
     const booksFromStorage = localStorage.getItem(STORAGE_KEY)
     if (booksFromStorage) {
         gBooks = JSON.parse(booksFromStorage)
-    } else {
+    }
+    if (gBooks.length === 0) {
         _createDemoBooks()
     }
 }
@@ -34,15 +36,21 @@ function _createDemoBooks() {
     _saveBooks()
 }
 
-function _saveBooks() {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(gBooks))
-}
 
 function getBooks() {
     return gBooks
 }
 
+function getBookById(bookId) {
+    const book = getBooks().find(b => b.id === bookId)
+    if (!book) return null
+    else {
+        return book
+    }
+}
+
 function getNextBookId() {
+    if (gBooks.length === 0) return 1
     const maxId = Math.max(...gBooks.map(book => {
         return parseInt(book.id.replace('bg', ''))
     }))
@@ -51,14 +59,14 @@ function getNextBookId() {
 
 function removeBook(bookId) {
     const index = gBooks.findIndex(book => book.id === bookId)
-    if (index > -1) {
+    if (index !== -1) {
         gBooks.splice(index, 1)
         _saveBooks()
     }
 }
 
 function updatePrice(bookId, newPrice) {
-    const book = gBooks.find(book => book.id === bookId)
+    const book = getBookById(bookId)
     if (book) {
         book.price = newPrice
         _saveBooks()
@@ -74,4 +82,10 @@ function addBook(title, price) {
     }
     gBooks.unshift(newBook)
     _saveBooks()
+}
+
+
+
+function _saveBooks() {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(gBooks))
 }

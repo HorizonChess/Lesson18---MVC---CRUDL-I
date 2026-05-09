@@ -26,12 +26,22 @@
         </tbody>
     </table>
 
-    <div class="book-details-modal hidden">
-        <div class="modal-content">
-            <button class="close-btn" onclick="onCloseModal()">✕</button>
-            <pre class="book-details-text"></pre>
+    <!-- <dialog class="book-details-modal">
+        <button class="close-btn" onclick="onCloseModal()">x</button>
+        <pre class="book-details-text"></pre>
+    </dialog> -->
+
+    <dialog class="book-details-modal">
+    <button class="close-btn" onclick="onCloseModal()">x</button>
+    <div class="modal-body">
+        <img class="book-cover" src="" alt="Book cover">
+        <div class="book-info">
+            <h2 class="book-title"></h2>
+            <p class="book-price"></p>
+            <p class="book-description"></p>
         </div>
     </div>
+</dialog>
 
     <script src="js/services/util.service.js"></script>
     <script src="js/services/book.service.js"></script>

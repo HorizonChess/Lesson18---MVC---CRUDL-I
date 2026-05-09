@@ -1,5 +1,5 @@
 function onInit() {
-    _loadBooks()
+    loadBooks()
     renderBooks()
 }
 
@@ -7,9 +7,9 @@ function renderBooks() {
     const books = getBooks()
     const tableBody = document.querySelector('.books-table-body')
 
-    var html = ''
-    books.forEach(book => {
-        html += `
+    var strHtml = ''
+    strHtml = books.map(book => {
+        return `
             <tr>
                 <td>${book.title}</td>
                 <td>${book.price}</td>
@@ -21,8 +21,8 @@ function renderBooks() {
             </tr>
         `
     })
-
-    tableBody.innerHTML = html
+    console.log(strHtml)
+    tableBody.innerHTML = strHtml.join('')
 }
 
 function onRemoveBook(bookId) {
@@ -31,9 +31,9 @@ function onRemoveBook(bookId) {
 }
 
 function onUpdateBook(bookId) {
-    const newPrice = prompt('Enter new price:')
+    const newPrice = +prompt('Enter new price:')
     if (newPrice !== null && newPrice !== '') {
-        updatePrice(bookId, parseInt(newPrice))
+        updatePrice(bookId, newPrice)
         renderBooks()
     }
 }
@@ -42,23 +42,25 @@ function onAddBook() {
     const title = prompt('Enter book title:')
     if (title === null || title === '') return
 
-    const price = prompt('Enter book price:')
+    const price = +prompt('Enter book price:')
     if (price === null || price === '') return
 
-    addBook(title, parseInt(price))
+    addBook(title, price)
     renderBooks()
 }
+//todo:
+//create service getbookById
 
 function onReadBook(bookId) {
-    const book = getBooks().find(b => b.id === bookId)
-    if (!book) return
+    const book = getBookById(bookId)
+    document.querySelector('.book-cover').src = 'assets/book cover-default.jpg'
+    document.querySelector('.book-title').innerText = book.title
+    document.querySelector('.book-price').innerText = makeLorem()
 
-    const detailsText = document.querySelector('.book-details-text')
-    detailsText.textContent = JSON.stringify(book, null, 2)
-
-    document.querySelector('.book-details-modal').classList.remove('hidden')
+    document.querySelector('.book-details-modal').showModal()
 }
 
 function onCloseModal() {
-    document.querySelector('.book-details-modal').classList.add('hidden')
+    document.querySelector('.book-details-modal').close()
 }
+
