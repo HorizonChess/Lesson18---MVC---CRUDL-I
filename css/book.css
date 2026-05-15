@@ -214,3 +214,15 @@ dialog::backdrop {
     transform: translate(-50%, -50%);
 
 }
+
+.stats-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    border-top: 2px solid #ddd;
+}

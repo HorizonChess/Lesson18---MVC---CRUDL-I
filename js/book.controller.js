@@ -1,6 +1,7 @@
 function onInit() {
     loadBooks()
     renderBooks()
+    renderFooter()
 }
 
 function renderBooks(books = getBooks()) {
@@ -27,6 +28,7 @@ function renderBooks(books = getBooks()) {
 function onRemoveBook(bookId) {
     removeBook(bookId)
     renderBooks()
+    renderFooter()
     showConfirmMsg('removed')
 }
 
@@ -35,8 +37,9 @@ function onUpdateBook(bookId) {
     if (newPrice !== null && newPrice !== '') {
         updatePrice(bookId, newPrice)
         renderBooks()
+        renderFooter()
+        showConfirmMsg('updated')
     }
-    showConfirmMsg('updated')
 }
 
 function onAddBook() {
@@ -48,6 +51,8 @@ function onAddBook() {
 
     addBook(title, price)
     renderBooks()
+    renderFooter()
+    showConfirmMsg('added')
 }
 
 function onReadBook(bookId) {
@@ -79,4 +84,11 @@ function showConfirmMsg(operation) {
     msgModal.innerText = `book sucessfully ${operation}`
     msgModal.showModal()
     setTimeout(() => { msgModal.close() }, 2000)
+}
+
+function renderFooter() {
+    const stats = getBookStats()
+    document.querySelector('.expensive-count').innerText = stats.expensive
+    document.querySelector('.average-count').innerText = stats.average
+    document.querySelector('.cheap-count').innerText = stats.cheap
 }

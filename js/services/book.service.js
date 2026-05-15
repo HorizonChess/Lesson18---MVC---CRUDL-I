@@ -87,14 +87,20 @@ function addBook(title, price) {
 
 function filterBooksByTitle(searchTerm) {
     if (!searchTerm) return gBooks
-    
+
     const lowerSearchTerm = searchTerm.toLowerCase()
-    return gBooks.filter(book => 
+    return gBooks.filter(book =>
         book.title.toLowerCase().includes(lowerSearchTerm)
     )
 }
 
+function getBookStats() {
+    const expensive = gBooks.filter(book => book.price > 200).length
+    const average = gBooks.filter(book => book.price >= 80 && book.price <= 200).length
+    const cheap = gBooks.filter(book => book.price < 80).length
 
+    return { expensive, average, cheap }
+}
 
 function _saveBooks() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(gBooks))
