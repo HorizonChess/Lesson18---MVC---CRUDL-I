@@ -3,8 +3,7 @@ function onInit() {
     renderBooks()
 }
 
-function renderBooks() {
-    const books = getBooks()
+function renderBooks(books = getBooks()) {
     const tableBody = document.querySelector('.books-table-body')
 
     var strHtml = ''
@@ -48,8 +47,6 @@ function onAddBook() {
     addBook(title, price)
     renderBooks()
 }
-//todo:
-//create service getbookById
 
 function onReadBook(bookId) {
     const book = getBookById(bookId)
@@ -58,6 +55,17 @@ function onReadBook(bookId) {
     document.querySelector('.book-price').innerText = makeLorem()
 
     document.querySelector('.book-details-modal').showModal()
+}
+
+function onFilterBooks() {
+    const searchTerm = document.querySelector('.search-input').value
+    const filteredBooks = filterBooksByTitle(searchTerm)
+    renderBooks(filteredBooks)
+}
+
+function onClearFilter() {
+    document.querySelector('.search-input').value = ''
+    renderBooks()
 }
 
 function onCloseModal() {

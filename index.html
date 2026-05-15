@@ -11,7 +11,11 @@
 
 <body onload="onInit()">
     <h1>Book Shop</h1>
-
+    <div class="search-section">
+        <input type="text" class="search-input" placeholder="Search books by title..." oninput="onFilterBooks()">
+        <button class="clear-btn" onclick="onClearFilter()">Clear</button>
+    </div>
+    
     <button class="addbook" onclick="onAddBook()">Add Book</button>
 
     <table>
@@ -26,22 +30,17 @@
         </tbody>
     </table>
 
-    <!-- <dialog class="book-details-modal">
-        <button class="close-btn" onclick="onCloseModal()">x</button>
-        <pre class="book-details-text"></pre>
-    </dialog> -->
-
     <dialog class="book-details-modal">
-    <button class="close-btn" onclick="onCloseModal()">x</button>
-    <div class="modal-body">
-        <img class="book-cover" src="" alt="Book cover">
-        <div class="book-info">
-            <h2 class="book-title"></h2>
-            <p class="book-price"></p>
-            <p class="book-description"></p>
+        <button class="close-btn" onclick="onCloseModal()">x</button>
+        <div class="modal-body">
+            <img class="book-cover" src="" alt="Book cover">
+            <div class="book-info">
+                <h2 class="book-title"></h2>
+                <p class="book-price"></p>
+                <p class="book-description"></p>
+            </div>
         </div>
-    </div>
-</dialog>
+    </dialog>
 
     <script src="js/services/util.service.js"></script>
     <script src="js/services/book.service.js"></script>
