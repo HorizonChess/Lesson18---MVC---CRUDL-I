@@ -203,3 +203,14 @@ dialog::backdrop {
 .clear-btn:hover {
     background-color: #5a6268;
 }
+
+.confirm-msg {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: fit-content;
+    min-height: 10vh;
+    min-width: 15vw;
+    transform: translate(-50%, -50%);
+
+}

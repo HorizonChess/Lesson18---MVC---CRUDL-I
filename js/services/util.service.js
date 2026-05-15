@@ -9,3 +9,4 @@ function makeLorem(length = 100) {
 
     return result.trim().substring(0, length)
 }
+

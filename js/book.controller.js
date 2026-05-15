@@ -27,6 +27,7 @@ function renderBooks(books = getBooks()) {
 function onRemoveBook(bookId) {
     removeBook(bookId)
     renderBooks()
+    showConfirmMsg('removed')
 }
 
 function onUpdateBook(bookId) {
@@ -35,6 +36,7 @@ function onUpdateBook(bookId) {
         updatePrice(bookId, newPrice)
         renderBooks()
     }
+    showConfirmMsg('updated')
 }
 
 function onAddBook() {
@@ -72,3 +74,9 @@ function onCloseModal() {
     document.querySelector('.book-details-modal').close()
 }
 
+function showConfirmMsg(operation) {
+    const msgModal = document.querySelector('.confirm-msg')
+    msgModal.innerText = `book sucessfully ${operation}`
+    msgModal.showModal()
+    setTimeout(() => { msgModal.close() }, 2000)
+}
